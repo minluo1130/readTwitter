@@ -28,11 +28,24 @@ public class ReadFromTwitter {
 		}
 		return true;
 	}
+	
+	private static String buildWriteFileDirectory() {
+		Path currentRelativePath = Paths.get("");
+		String relativePath = TwitterConfiguration.getProperties().getProperty("FILE.PATH");
+		String filePath = currentRelativePath.toAbsolutePath().toString() + File.separator + relativePath;
+
+		File directory = new File(filePath);
+		if (!directory.exists()) {
+			directory.mkdir();
+		}
+		
+		return filePath;
+	}
 
 	public static void main(String[] args) throws Exception {
 
 		System.out.println(
-				"Please enter up to 5 topics tweets you like to read, use \",\" to seperate them. enter quit to exit program");
+				"Please enter up to 5 topics you like to read from twitter, use \",\" to seperate them. enter quit to exit program");
 
 		scan = new Scanner(System.in);
 
@@ -45,14 +58,7 @@ public class ReadFromTwitter {
 
 		TwitterConfiguration.loadProperties();
 
-		Path currentRelativePath = Paths.get("");
-		String relativePath = TwitterConfiguration.getProperties().getProperty("FILE.PATH");
-		String filePath = currentRelativePath.toAbsolutePath().toString() + File.separator + relativePath;
-
-		File directory = new File(filePath);
-		if (!directory.exists()) {
-			directory.mkdir();
-		}
+		String filePath =buildWriteFileDirectory();
 
 		ReadFromTwitterTopic readFromTwitterTopic = new ReadFromTwitterTopic(topicList, filePath);
 

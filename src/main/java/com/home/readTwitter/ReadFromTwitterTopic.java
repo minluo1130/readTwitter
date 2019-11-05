@@ -120,7 +120,7 @@ public class ReadFromTwitterTopic implements Runnable {
 			}
 			try {
 				Thread.sleep(5000);
-				System.out.println("Writting file....");
+				System.out.println("Writting file.............");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
