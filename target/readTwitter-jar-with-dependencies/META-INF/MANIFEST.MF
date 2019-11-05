@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: minluo
+Created-By: Apache Maven 3.5.3
+Build-Jdk: 1.8.0_191
+Main-Class: com.home.readTwitter.ReadFromTwitter
+
